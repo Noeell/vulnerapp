@@ -14,7 +14,7 @@ import java.util.Scanner;
 @Service
 @Transactional
 @RequiredArgsConstructor
-@EnableMethodSecurity
+@EnableMethodSecurity //(securedEnabled = true) required but it doesn't work with this
 public class HealthService {
 
     private final UserRepository userRepository;

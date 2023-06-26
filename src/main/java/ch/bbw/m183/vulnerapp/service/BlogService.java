@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-@EnableMethodSecurity
+@EnableMethodSecurity //(securedEnabled = true) required but it doesn't work with this
 public class BlogService {
 
 	private final BlogRepository blogRepository;

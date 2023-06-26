@@ -21,7 +21,7 @@ import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity //(securedEnabled = true) it does not work with this
+@EnableMethodSecurity //(securedEnabled = true) required but it doesn't work with this
 public class BasicConfiguration {
 
     @Bean

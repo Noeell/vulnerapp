@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 @Service
 @Transactional
 @RequiredArgsConstructor
-@EnableMethodSecurity
+@EnableMethodSecurity //(securedEnabled = true) required but it doesn't work with this
 @Slf4j
 public class AdminService {
 
