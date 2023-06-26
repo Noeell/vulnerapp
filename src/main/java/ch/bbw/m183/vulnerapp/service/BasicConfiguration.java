@@ -5,6 +5,7 @@ import ch.bbw.m183.vulnerapp.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -20,9 +21,8 @@ import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity //(securedEnabled = true) it does not work with this
 public class BasicConfiguration {
-
-    private CustomAuthenticationProvider provider;
 
     @Bean
     public UserDetailsService userDetailsService(UserRepository userRepository) {
@@ -41,6 +41,7 @@ public class BasicConfiguration {
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(HttpMethod.GET, "/api/blog").permitAll()
                                 .requestMatchers("/api/**").authenticated()
+                                //        .requestMatchers("/api/admin123/**").hasRole("ADMIN")
                                 .anyRequest().permitAll()
                 ).csrf((csrf) -> csrf
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
